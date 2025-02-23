@@ -381,7 +381,7 @@ async function sendMessage(
     }
   }
 
-  return setMessages(prev => [...prev, response]) as JSX.Element;
+  return setMessages(prev => [...prev, response]) as unknown as JSX.Element;
 }
 
 export function DeepSeekChat() {

@@ -28,6 +28,7 @@ import { useAuthStore } from './store/auth';
 import { TermsAndConditions } from './pages/TermsAndConditions';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Footer } from './components/Footer';
+import type { Solution } from './types/shared';
 
 function App() {
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);

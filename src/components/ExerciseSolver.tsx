@@ -29,7 +29,7 @@ interface ExerciseSolverProps {
 
 export function ExerciseSolver({ documentText, solution }: ExerciseSolverProps) {
   const [question, setQuestion] = useState<string>('');
-  const [solutions, setSolutions] = useState<Array<Solution & { practiceProblems?: any[]; furtherReading?: any[] }>>([]);
+  const [solutions, setSolutions] = useState<Solution[]>([]);
   const [mode, setMode] = useState<Mode>('exercise');
   const [examSubmissions, setExamSubmissions] = useState<ExamSubmission[]>([]);
   const [currentAnswer, setCurrentAnswer] = useState('');
@@ -328,13 +328,12 @@ Guidelines:
   };
 
   const downloadSolution = (solution: Solution) => {
-    const content = `Exercise Solution
-
+    const content = `
 Question:
-${solution.question}
+${solution.question || solution.problemStatement}
 
 Step-by-Step Solution:
-${solution.steps.map((step, index) => `
+${(solution.steps || solution.solutionSteps || []).map((step, index) => `
 Step ${index + 1}:
 ${step.explanation}
 ${step.hint ? `\nHint: ${step.hint}` : ''}`).join('\n')}
@@ -345,7 +344,7 @@ ${solution.finalAnswer}
 Related Concepts:
 ${solution.relatedConcepts.join(', ')}
 
-Difficulty: ${solution.difficulty}`;
+Difficulty: ${solution.difficulty || solution.metadata?.difficulty}`;
 
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -528,7 +527,7 @@ Difficulty: ${solution.difficulty}`;
             <div className="flex items-center justify-between pb-4 border-b border-[#3A3A3C]">
               <div>
                 <h3 className="font-medium">Question</h3>
-                <p className="text-gray-400 mt-1">{solution.question}</p>
+                <p className="text-gray-400 mt-1">{solution.problemStatement}</p>
               </div>
               <div className="flex items-center gap-2">
                 <span className={`px-2 py-1 rounded text-sm ${

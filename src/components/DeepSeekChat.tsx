@@ -247,6 +247,7 @@ const API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 function ChatMessage({ message, isStreaming, inline }: ChatMessageProps) {
   const [showThoughts, setShowThoughts] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   return (
     <div
@@ -255,7 +256,7 @@ function ChatMessage({ message, isStreaming, inline }: ChatMessageProps) {
           ? 'bg-[#2C2C2E] ml-12' 
           : 'bg-[#3A3A3C] mr-12'
       }`}
-      data-inline={inline ? "true" : undefined}
+      data-inline={inline}
     >
       <div className="prose prose-invert max-w-none">
         <ReactMarkdown

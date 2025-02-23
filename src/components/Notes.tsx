@@ -145,7 +145,7 @@ export function Notes({ text }: NotesProps) {
           
           ${text}`
         );
-        editor.commands.setContent(result);
+        editor.commands.setContent(result.join(''));
       } catch (error) {
         console.error('Failed to generate notes:', error);
       } finally {

@@ -244,6 +244,7 @@ function ThinkingAnimation({ onFadeOutRef }: ThinkingAnimationProps) {
 interface ChatMessageProps {
   message: Message;
   isStreaming?: boolean;
+  inline?: boolean;
 }
 
 const API_KEY = 'sk-84bedb070f484479be0d09dca0bf142b';
@@ -379,6 +380,8 @@ async function sendMessage(
       }
     }
   }
+
+  return setMessages(prev => [...prev, response]) as JSX.Element;
 }
 
 export function DeepSeekChat() {

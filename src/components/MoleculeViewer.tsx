@@ -149,7 +149,7 @@ export function MoleculeViewer() {
       }
       
       viewer.current.zoomTo();
-      viewer.current.render();
+      viewer.current.render(data);
     } catch (error) {
       console.error('Error loading molecule:', error);
     } finally {

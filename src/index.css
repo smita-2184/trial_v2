@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1C1E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A3A3C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A4A4C;
+}
+
+/* Translate Widget Position */
+.translate-widget {
+  margin-top: 60px;
+}
+
+/* Google Translate Styles */
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important; 
+}
+
+/* Make all text elements white */
+.goog-te-gadget span,
+.goog-te-gadget div,
+.goog-te-menu2 span,
+.goog-te-menu2 div,
+.goog-te-menu-value span {
+  color: #FFFFFF !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  color: #FFFFFF !important;
+  background: #4A4A4C !important;
+  border: 2px solid #6A6A6C !important;
+  padding: 10px 16px !important;
+  border-radius: 6px !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  min-width: 160px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 8px center !important;
+  background-size: 16px !important;
+  padding-right: 36px !important;
+}
+
+.goog-te-gadget .goog-te-combo option {
+  background: #3A3A3C !important;
+  padding: 12px !important;
+  font-size: 16px !important;
+  color: #FFFFFF !important;
+}
+
+/* Style the dropdown menu */
+.goog-te-menu-frame {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.goog-te-menu2 {
+  background-color: #2C2C2E !important;
+  border: none !important;
+  padding: 8px !important;
+  border-radius: 6px !important;
+}
+
+.goog-te-menu2-item div,
+.goog-te-menu2-item:link div,
+.goog-te-menu2-item:visited div,
+.goog-te-menu2-item:active div {
+  color: #FFFFFF !important;
+  background-color: #2C2C2E !important;
+  padding: 8px !important;
+}
+
+.goog-te-menu2-item:hover div {
+  background-color: #3A3A3C !important;
+}
+
+.goog-te-menu2-item-selected div {
+  background-color: #4A4A4C !important;
+}
+
+.goog-te-gadget .goog-te-combo:hover {
+  background-color: #5A5A5C !important;
+  border-color: #7A7A7C !important;
+}
+
+.goog-te-gadget .goog-te-combo:focus {
+  border-color: #8A8A8C !important;
+  box-shadow: 0 0 0 2px rgba(138, 138, 140, 0.3) !important;
+}
+
+/* Fix dropdown position */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+#google_translate_element {
+  position: relative !important;
+  min-height: 48px !important;
+  min-width: 160px !important;
+  z-index: 1000 !important;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}

@@ -3,6 +3,7 @@ import { useOpenAIStore } from '../store/openai';
 import { Upload, SendHorizontal, RefreshCw, Calculator, ChevronRight, Download, X, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
 import { BlockMath } from 'react-katex';
 import { useDropzone } from 'react-dropzone';
+import type { Solution } from '../types/shared';
 
 const DEEPSEEK_API_KEY = 'sk-84bedb070f484479be0d09dca0bf142b';
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
@@ -21,23 +22,12 @@ interface ExamSubmission {
 
 type Mode = 'exercise' | 'exam';
 
-interface Solution {
-  question: string;
-  steps: {
-    explanation: string;
-    latex?: string;
-    hint?: string;
-  }[];
-  finalAnswer: string;
-  relatedConcepts: string[];
-  difficulty: 'Easy' | 'Medium' | 'Hard';
-}
-
 interface ExerciseSolverProps {
   documentText: string;
+  solution: Solution;
 }
 
-export function ExerciseSolver({ documentText }: ExerciseSolverProps) {
+export function ExerciseSolver({ documentText, solution }: ExerciseSolverProps) {
   const [question, setQuestion] = useState<string>('');
   const [solutions, setSolutions] = useState<Solution[]>([]);
   const [mode, setMode] = useState<Mode>('exercise');

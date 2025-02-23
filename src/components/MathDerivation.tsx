@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, RotateCcw, ChevronRight, ChevronLeft } from 'lucide-react';
+import type { MathExpression } from '../types/shared';
 import { BlockMath } from 'react-katex';
 import { useOpenAIStore } from '../store/openai';
 import { Mafs, Coordinates, Plot, Theme, Point, Text, Transform, Vector } from 'mafs';
@@ -13,27 +14,9 @@ interface DerivationStep {
   visualization?: {
     type: 'function' | 'transform' | 'vector' | 'point';
     data: {
-      before: {
-        type: 'text' | 'function' | 'vector';
-        content?: string;
-        fn?: (x: number) => number;
-        start?: [number, number];
-        end?: [number, number];
-      };
-      after: {
-        type: 'text' | 'function' | 'vector';
-        content?: string;
-        fn?: (x: number) => number;
-        start?: [number, number];
-        end?: [number, number];
-      };
-      intermediates?: Array<{
-        type: 'text' | 'function' | 'vector';
-        content?: string;
-        fn?: (x: number) => number;
-        start?: [number, number];
-        end?: [number, number];
-      }>;
+      before: MathExpression;
+      after: MathExpression;
+      intermediates?: MathExpression[];
     };
     transformType?: 'translation' | 'rotation' | 'scale';
   };
@@ -246,8 +229,6 @@ export function MathDerivation() {
     }
   };
 
-  // Rest of the code remains the same...
-
   const generateDerivation = async (expression: string) => {
     if (!service) return;
     
@@ -311,7 +292,7 @@ export function MathDerivation() {
           const { before, after } = step.visualization.data;
           try {
             if (before.fn) {
-              const compiledBefore = math.compile(before.fn as string);
+              const compiledBefore = math.compile(before.content || '');
               before.fn = (x: number) => {
                 try {
                   const result = compiledBefore.evaluate({ x });
@@ -322,7 +303,7 @@ export function MathDerivation() {
               };
             }
             if (after.fn) {
-              const compiledAfter = math.compile(after.fn as string);
+              const compiledAfter = math.compile(after.content || '');
               after.fn = (x: number) => {
                 try {
                   const result = compiledAfter.evaluate({ x });
@@ -347,8 +328,6 @@ export function MathDerivation() {
       setLoading(false);
     }
   };
-
-  // Rest of the code remains the same...
 
   return (
     <div className="h-full flex flex-col">

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import type { ChatMessageProps } from '../types/shared';
 import { SendHorizontal, Brain, RefreshCw, ChevronRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
@@ -241,12 +242,6 @@ function ThinkingAnimation({ onFadeOutRef }: ThinkingAnimationProps) {
   );
 }
 
-interface ChatMessageProps {
-  message: Message;
-  isStreaming?: boolean;
-  inline?: boolean;
-}
-
 const API_KEY = 'sk-84bedb070f484479be0d09dca0bf142b';
 const API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
@@ -382,7 +377,6 @@ async function sendMessage(
   }
 
   setMessages(prev => [...prev, response]);
-  return null;
 }
 
 export function DeepSeekChat() {

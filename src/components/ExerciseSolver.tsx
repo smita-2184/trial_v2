@@ -29,7 +29,7 @@ interface ExerciseSolverProps {
 
 export function ExerciseSolver({ documentText, solution }: ExerciseSolverProps) {
   const [question, setQuestion] = useState<string>('');
-  const [solutions, setSolutions] = useState<Solution[]>([]);
+  const [solutions, setSolutions] = useState<Array<Solution & { practiceProblems?: any[]; furtherReading?: any[] }>>([]);
   const [mode, setMode] = useState<Mode>('exercise');
   const [examSubmissions, setExamSubmissions] = useState<ExamSubmission[]>([]);
   const [currentAnswer, setCurrentAnswer] = useState('');

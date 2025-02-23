@@ -201,8 +201,8 @@ export function MathDerivation() {
                   y={(x) => {
                     try {
                       const progress = (Math.sin(t) + 1) / 2;
-                      const beforeY = typeof data.before.fn === 'function' ? data.before.fn(x) : 0;
-                      const afterY = typeof data.after.fn === 'function' ? data.after.fn(x) : 0;
+                      const beforeY = data.before.fn ? data.before.fn(x) : 0;
+                      const afterY = data.after.fn ? data.after.fn(x) : 0;
                       const result = beforeY + (afterY - beforeY) * progress;
                       return isFinite(result) ? result : 0;
                     } catch (error) {

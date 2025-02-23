@@ -245,7 +245,7 @@ function ThinkingAnimation({ onFadeOutRef }: ThinkingAnimationProps) {
 const API_KEY = 'sk-84bedb070f484479be0d09dca0bf142b';
 const API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
-function ChatMessage({ message, isStreaming }: ChatMessageProps) {
+function ChatMessage({ message, isStreaming, inline }: ChatMessageProps) {
   const [showThoughts, setShowThoughts] = useState(false);
 
   return (
@@ -255,6 +255,7 @@ function ChatMessage({ message, isStreaming }: ChatMessageProps) {
           ? 'bg-[#2C2C2E] ml-12' 
           : 'bg-[#3A3A3C] mr-12'
       }`}
+      data-inline={inline ? "true" : undefined}
     >
       <div className="prose prose-invert max-w-none">
         <ReactMarkdown
@@ -473,6 +474,7 @@ export function DeepSeekChat() {
             key={i}
             message={message}
             isStreaming={i === state.messages.length - 1 && state.isLoading}
+            inline={i === state.messages.length - 1 && state.isLoading}
           />
         ))}
         {state.isLoading && (

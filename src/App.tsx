@@ -14,7 +14,7 @@ import { KeyConcepts } from './components/KeyConcepts';
 import { PDFViewer } from './components/PDFViewer';
 import { MathVisualization } from './components/MathVisualization';
 import { MathExercises } from './components/MathExercises';
-import { ExerciseSolver } from './components/ExerciseSolver'; 
+import { ExerciseSolver } from './components/ExerciseSolver';
 import { PresentationMaker } from './components/PresentationMaker';
 import { CodeEditor } from './components/CodeEditor';
 import { TechnicalMechanics } from './components/TechnicalMechanics';
@@ -405,7 +405,7 @@ function App() {
                 </div>
               </TabsContent>
               <TabsContent value="exercise-solver" className="h-full">
-                <ExerciseSolver documentText={pdfText} />
+                <ExerciseSolver documentText={pdfText} solution={{} as Solution} />
               </TabsContent>
               <TabsContent value="math-lab" className="h-full">
                 <div className="h-full flex flex-col">

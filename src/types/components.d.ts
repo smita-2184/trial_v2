@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 
 export interface Solution {
-  practiceProblems?: Array<{
+  practiceProblems: Array<{
     question: string;
     answer: string;
   }>;
-  furtherReading?: Array<{
+  furtherReading: Array<{
     title: string;
     url: string;
   }>;
@@ -15,7 +15,7 @@ export interface PointProps {
   x: number;
   y: number;
   color: string;
-  size?: number;
+  size: number;
 }
 
 export interface MathExpression {
@@ -24,10 +24,10 @@ export interface MathExpression {
   fn?: (x: number) => number;
   start?: [number, number];
   end?: [number, number];
-  x?: number;
-  y?: number;
-  angle?: number;
-  scale?: number;
+  x?: number[];
+  y?: number[];
+  angle?: number[];
+  scale?: number[];
 }
 
 export interface ExtraProps {

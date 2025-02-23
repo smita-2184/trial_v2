@@ -18,7 +18,7 @@ export function PDFViewer({ file, onTextExtracted }: PDFViewerProps) {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [dimensions, setDimensions] = useState({
-    width: 'auto',
+    width: 800,
     height: 500
   });
   const previousDimensions = useRef(dimensions);

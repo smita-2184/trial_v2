@@ -335,6 +335,7 @@ export function TechnicalMechanics() {
         isFullscreen ? 'fixed inset-4 z-50' : ''
       }`}
       style={!isFullscreen ? { height: dimensions.height, width: dimensions.width } : undefined}
+      draggable={true}
     >
       {/* Header with controls */}
       <div className="flex items-center justify-between p-4 bg-[#1C1C1E] rounded-t-lg sticky top-0 z-10">

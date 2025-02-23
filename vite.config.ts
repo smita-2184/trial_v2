@@ -15,5 +15,24 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['monaco-editor']
+  },
+  build: {
+    target: 'esnext',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'monaco-editor': ['monaco-editor'],
+          'vendor': [
+            'react',
+            'react-dom',
+            'react-router-dom',
+            '@radix-ui/react-tabs',
+            'firebase'
+          ]
+        }
+      }
+    }
   }
 })

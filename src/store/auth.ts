@@ -11,8 +11,8 @@ interface User {
   major: string;
   role: string;
   semester: number;
-  createdAt: Date;
-  lastLogin: Date;
+  createdAt: any; // FieldValue from Firebase
+  lastLogin: any; // FieldValue from Firebase
 }
 
 interface AuthState {

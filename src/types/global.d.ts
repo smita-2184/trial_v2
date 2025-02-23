@@ -4,6 +4,11 @@ interface Window {
   webkitSpeechRecognition: any;
 }
 
+interface SpeechRecognitionEvent {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+}
+
 declare module 'plotly.js' {
   interface PlotParams {
     type?: string;

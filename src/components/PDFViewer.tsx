@@ -133,8 +133,8 @@ export function PDFViewer({ file, onTextExtracted }: PDFViewerProps) {
         isFullscreen ? 'fixed inset-4 z-50' : ''
       }`}
       style={{ 
-        width: dimensions.width,
-        height: dimensions.height 
+        width: `${dimensions.width}px`,
+        height: `${dimensions.height}px` 
       }}
     >
       {/* Toolbar */}

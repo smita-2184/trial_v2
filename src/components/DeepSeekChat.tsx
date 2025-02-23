@@ -381,7 +381,8 @@ async function sendMessage(
     }
   }
 
-  return setMessages(prev => [...prev, response]) as unknown as JSX.Element;
+  setMessages(prev => [...prev, response]);
+  return null;
 }
 
 export function DeepSeekChat() {
@@ -393,6 +394,7 @@ export function DeepSeekChat() {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const audioFadeRef = useRef<(() => void) | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

@@ -311,7 +311,7 @@ export function MathDerivation() {
           const { before, after } = step.visualization.data;
           try {
             if (before.fn) {
-              const compiledBefore = math.compile(before.fn as unknown as math.Expression);
+              const compiledBefore = math.compile(before.fn as string);
               before.fn = (x: number) => {
                 try {
                   const result = compiledBefore.evaluate({ x });
@@ -322,7 +322,7 @@ export function MathDerivation() {
               };
             }
             if (after.fn) {
-              const compiledAfter = math.compile(after.fn as unknown as math.Expression);
+              const compiledAfter = math.compile(after.fn as string);
               after.fn = (x: number) => {
                 try {
                   const result = compiledAfter.evaluate({ x });

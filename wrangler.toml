@@ -17,5 +17,4 @@ entry-point = "workers-site"
 [build]
 command = "npm run build"
 upload.format = "service-worker"
-dist = "dist"
-node_version = "20.11.0" 
+dist = "dist" 

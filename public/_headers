@@ -1,0 +1,6 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: document-domain=()
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' *.cloudflareinsights.com *.googleapis.com *.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' *.googleapis.com wss: https:; 

@@ -17,11 +17,16 @@ export function PDFViewer({ file, onTextExtracted }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [dimensions, setDimensions] = useState({
+  interface Dimensions {
+    width: number | 'auto';
+    height: number;
+  }
+
+  const [dimensions, setDimensions] = useState<Dimensions>({
     width: 'auto',
     height: 500
   });
-  const previousDimensions = useRef(dimensions);
+  const previousDimensions = useRef<Dimensions>(dimensions);
   const containerRef = useRef<HTMLDivElement>(null);
   const verticalResizeRef = useRef<HTMLDivElement>(null);
   const cornerResizeRef = useRef<HTMLDivElement>(null);

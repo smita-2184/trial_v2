@@ -28,6 +28,11 @@ export function Quiz({ text }: QuizProps) {
     async function generateQuiz() {
       setLoading(true);
       try {
+        if (!service) {
+          console.error('OpenAI service is not initialized');
+          return;
+        }
+
         const prompt = `Generate a quiz with 5 multiple choice questions based on this text. Format as JSON:
         {
           "questions": [

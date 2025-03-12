@@ -221,22 +221,22 @@ export function Notes({ text }: NotesProps) {
   };
 
   // Function to process text and handle math expressions
-  const processText = (text: string): React.ReactNode[] => {
-    const parts = text.split(/(\$\$.*?\$\$|\$.*?\$)/gs);
-    return parts.map((part, index) => {
+  const processText = (text: string): string => {
+    const parts = text.split(/($$.*?$$|$.*?$)/gs);
+    return parts.map((part) => {
       if (part.startsWith('$$') && part.endsWith('$$')) {
-        return <BlockMath key={index} math={part.slice(2, -2)} />;
+        return part; // Keep LaTeX as-is
       } else if (part.startsWith('$') && part.endsWith('$')) {
-        return <InlineMath key={index} math={part.slice(1, -1)} />;
+        return part; // Keep LaTeX as-is
       }
       // Process markdown-style formatting
       return part
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-        .replace(/^### (.*$)/gm, '<h3>$1</h3>');
-    });
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/^# (.*$)/gm, '$1')
+        .replace(/^## (.*$)/gm, '$1')
+        .replace(/^### (.*$)/gm, '$1');
+    }).join('');
   };
 
   const handleSlashCommand = useCallback((e: KeyboardEvent) => {
